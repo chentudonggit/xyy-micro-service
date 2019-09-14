@@ -1,0 +1,75 @@
+spring:
+  profiles:
+    active: development
+
+  application:
+    name: xyy-eureka-server
+
+---
+server:
+  port: 8761
+
+spring:
+  profiles: development
+  security:
+    user:
+      name: xyy
+      password: xyy159357
+
+eureka:
+  server:
+    enableSelfPreservation: false
+    evictionIntervalTimerInMs: 5000
+  instance:
+    hostname: 127.0.0.1
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+server:
+  port: 9831
+
+spring:
+  profiles: testing
+  security:
+    user:
+      name: xyy
+      password: xyy258456
+
+eureka:
+  server:
+    enableSelfPreservation: false
+    evictionIntervalTimerInMs: 5000
+  instance:
+    hostname: 127.0.0.1
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+server:
+  port: 19820
+
+spring:
+  profiles: production
+  security:
+    user:
+      name: chentd
+      password: ctd1992
+
+eureka:
+  server:
+    enableSelfPreservation: false
+    evictionIntervalTimerInMs: 5000
+  instance:
+    hostname: 127.0.0.1
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
