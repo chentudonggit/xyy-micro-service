@@ -5,18 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.xyy.framework</groupId>
-        <artifactId>xyy-framework-parent</artifactId>
+        <artifactId>xyy-micro-service</artifactId>
+        <groupId>com.xyy.micro.server</groupId>
         <version>1.0.ALPHA</version>
     </parent>
 
-    <groupId>com.xyy.micro.server</groupId>
-    <artifactId>xyy-micro-service</artifactId>
-    <version>1.0.ALPHA</version>
+    <artifactId>xyy-user-server</artifactId>
     <packaging>pom</packaging>
-
     <modules>
-        <module>xyy-center</module>
-        <module>xyy-user-server</module>
+        <module>xyy-user-server-model</module>
+        <module>xyy-user-server-consumer</module>
+        <module>xyy-user-server-provider</module>
+        <module>xyy-user-server-client</module>
     </modules>
 </project>
