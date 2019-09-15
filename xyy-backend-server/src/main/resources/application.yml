@@ -1,0 +1,48 @@
+spring:
+  profiles:
+    active: development
+
+  application:
+    name: xyy-backend-server
+
+---
+server:
+  port: 8546
+
+spring:
+  profiles: development
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://xyy:xyy159357@${eureka.instance.hostname}:8761/eureka/
+
+---
+server:
+  port: 8544
+
+spring:
+  profiles: testing
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://xyy:xyy258456@${eureka.instance.hostname}:9831/eureka/
+
+---
+server:
+  port: 29863
+
+spring:
+  profiles: production
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://chentd:ctd1992@${eureka.instance.hostname}:19820/eureka/

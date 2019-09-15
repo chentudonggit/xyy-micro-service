@@ -1,7 +1,11 @@
 package com.xyy.user.server.service.user;
 
+import com.xyy.framework.common.utils.assertion.AssertUtils;
 import com.xyy.user.server.vo.user.UserVO;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
 
 /**
  * UserServiceImpl
@@ -51,7 +55,12 @@ public class UserServiceImpl implements UserService
     @Override
     public UserVO findById(String id)
     {
-        return null;
+        if(StringUtils.isBlank(id))
+        {
+            AssertUtils.throwMessageToWebDevelopment("id 不能为空");
+        }
+        Date date = new Date();
+        return new UserVO("123", "chentudong", "13124927243", "123123", date, date);
     }
 
     /**

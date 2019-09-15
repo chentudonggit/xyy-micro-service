@@ -18,5 +18,6 @@
     <modules>
         <module>xyy-center</module>
         <module>xyy-user-server</module>
+        <module>xyy-backend-server</module>
     </modules>
 </project>

@@ -4,22 +4,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>xyy-user-server</artifactId>
         <groupId>com.xyy.micro.server</groupId>
+        <artifactId>xyy-micro-service</artifactId>
         <version>1.0.ALPHA</version>
     </parent>
 
-    <artifactId>xyy-user-server-consumer</artifactId>
+    <artifactId>xyy-backend-server</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.xyy.micro.server</groupId>
-            <artifactId>xyy-user-server-model</artifactId>
+            <artifactId>xyy-user-server-client</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.xyy.framework</groupId>
-            <artifactId>xyy-framework-web-starter</artifactId>
+            <artifactId>xyy-framework-api-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
     </dependencies>
+
 </project>
