@@ -1,4 +1,4 @@
-package com.xyy.user.server.model.user;
+package com.xyy.user.server.domian.user;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
