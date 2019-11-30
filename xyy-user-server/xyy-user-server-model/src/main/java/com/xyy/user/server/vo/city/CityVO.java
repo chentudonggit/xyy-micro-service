@@ -1,11 +1,9 @@
 package com.xyy.user.server.vo.city;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.xyy.user.server.enums.status.StatusEnum;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Objects;
+import java.util.List;
 
 /**
  * CityVO
@@ -31,6 +29,12 @@ public class CityVO implements Serializable
     private Integer parentId;
 
     /**
+     * postCode
+     */
+    @JSONField(name = "post_code")
+    private String postCode;
+
+    /**
      * cityCode
      */
     @JSONField(name = "city_code")
@@ -43,34 +47,16 @@ public class CityVO implements Serializable
     private Integer sort;
 
     /**
-     * status
-     */
-    @JSONField(name = "status")
-    private StatusEnum status;
-
-    /**
      * name
      */
     @JSONField(name = "city_name")
     private String cityName;
 
     /**
-     * remark
+     * childes
      */
-    @JSONField(name = "remark")
-    private String remark;
-
-    /**
-     * createTime
-     */
-    @JSONField(name = "create_time")
-    private Date createTime;
-
-    /**
-     * updateTime
-     */
-    @JSONField(name = "update_time")
-    private Date updateTime;
+    @JSONField(name = "children")
+    private List<CityVO> children;
 
     public Integer getId()
     {
@@ -92,6 +78,16 @@ public class CityVO implements Serializable
         this.parentId = parentId;
     }
 
+    public String getPostCode()
+    {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode)
+    {
+        this.postCode = postCode;
+    }
+
     public String getCityCode()
     {
         return cityCode;
@@ -104,22 +100,12 @@ public class CityVO implements Serializable
 
     public Integer getSort()
     {
-        return Objects.isNull(sort) ? 0 : sort;
+        return sort;
     }
 
     public void setSort(Integer sort)
     {
         this.sort = sort;
-    }
-
-    public StatusEnum getStatus()
-    {
-        return status;
-    }
-
-    public void setStatus(StatusEnum status)
-    {
-        this.status = status;
     }
 
     public String getCityName()
@@ -132,33 +118,13 @@ public class CityVO implements Serializable
         this.cityName = cityName;
     }
 
-    public String getRemark()
+    public List<CityVO> getChildren()
     {
-        return remark;
+        return children;
     }
 
-    public void setRemark(String remark)
+    public void setChildren(List<CityVO> children)
     {
-        this.remark = remark;
-    }
-
-    public Date getCreateTime()
-    {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime)
-    {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime()
-    {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime)
-    {
-        this.updateTime = updateTime;
+        this.children = children;
     }
 }

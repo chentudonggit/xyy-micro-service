@@ -30,15 +30,17 @@ public class CityServiceImpl implements CityService
      *
      * @param id       id
      * @param parentId 父级id
-     * @param cityCode 城市代码
+     * @param sort     sort
+     * @param cityCode cityCode
+     * @param postCode 城市代码
      * @param cityName 城市名称
      * @param remark   备注
      * @return CityVO
      */
     @Override
-    public CityVO save(Integer id, Integer parentId, String cityCode, String cityName, String remark)
+    public CityVO save(Integer id, Integer parentId, Integer sort, String cityCode, String postCode, String cityName, String remark)
     {
-        return BeanHelper.convert(cityManager.save(id, parentId, cityCode, cityName, remark), CityVO.class);
+        return BeanHelper.convert(cityManager.save(id, parentId, sort, cityCode, postCode, cityName, remark), CityVO.class);
     }
 
     /**
@@ -62,7 +64,7 @@ public class CityServiceImpl implements CityService
     @Override
     public List<CityVO> findAllById(Integer id)
     {
-        return null;
+        return BeanHelper.convert(cityManager.findAllByParentId(id), CityVO.class);
     }
 
     /**
@@ -75,7 +77,18 @@ public class CityServiceImpl implements CityService
     @Override
     public PageVO<CityVO> findAll(Integer page, Integer size)
     {
-        return null;
+        return cityManager.findPage(page, size);
+    }
+
+    /**
+     * findAll
+     *
+     * @return List<CityVO>
+     */
+    @Override
+    public List<CityVO> findAll()
+    {
+        return cityManager.findAll();
     }
 
     /**
@@ -89,7 +102,7 @@ public class CityServiceImpl implements CityService
     @Override
     public PageVO<CityVO> findPageById(Integer id, Integer page, Integer size)
     {
-        return null;
+        return cityManager.findPageById(id, page, size);
     }
 
     /**
@@ -102,5 +115,17 @@ public class CityServiceImpl implements CityService
     public CityVO findLastByParentId(Integer parentId)
     {
         return BeanHelper.convert(cityManager.findLastByParentId(parentId), CityVO.class);
+    }
+
+    /**
+     * 更新
+     *
+     * @param cites cites
+     * @return Integer
+     */
+    @Override
+    public Integer updateAll(CityVO[] cites)
+    {
+        return cityManager.updateAll(cites);
     }
 }

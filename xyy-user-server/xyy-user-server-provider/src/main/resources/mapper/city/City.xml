@@ -8,6 +8,7 @@
         <result column="parent_id" property="parentId" jdbcType="INTEGER"/>
         <result column="city_name" property="cityName" jdbcType="VARCHAR"/>
         <result column="city_code" property="cityCode" jdbcType="VARCHAR"/>
+        <result column="post_code" property="postCode" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="DATE"/>
         <result column="update_time" property="updateTime" jdbcType="DATE"/>
     </resultMap>

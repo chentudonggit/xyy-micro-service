@@ -2,6 +2,7 @@ package com.xyy.user.server.service.city;
 
 import com.xyy.framework.common.builder.page.PageVO;
 import com.xyy.user.server.vo.city.CityVO;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,7 +23,9 @@ public interface CityService
      *
      * @param id       id
      * @param parentId 父级id
-     * @param cityCode 城市代码
+     * @param sort     sort
+     * @param cityCode cityCode
+     * @param postCode 城市代码
      * @param cityName 城市名称
      * @param remark   备注
      * @return CityVO
@@ -30,7 +33,9 @@ public interface CityService
     @RequestMapping("save")
     CityVO save(@RequestParam("id") Integer id,
                 @RequestParam("parentId") Integer parentId,
+                @RequestParam("sort") Integer sort,
                 @RequestParam("cityCode") String cityCode,
+                @RequestParam("postCode") String postCode,
                 @RequestParam("cityName") String cityName,
                 @RequestParam("remark") String remark);
 
@@ -60,9 +65,17 @@ public interface CityService
      * @param size size
      * @return PageVO<CityVO>
      */
-    @RequestMapping("findAll")
+    @RequestMapping("findAllPage")
     PageVO<CityVO> findAll(@RequestParam("page") Integer page,
                            @RequestParam("size") Integer size);
+
+    /**
+     * findAll
+     *
+     * @return List<CityVO>
+     */
+    @RequestMapping("findAll")
+    List<CityVO> findAll();
 
     /**
      * 分页获取
@@ -85,4 +98,13 @@ public interface CityService
      */
     @RequestMapping("findLastByParentId")
     CityVO findLastByParentId(@RequestParam("parentId") Integer parentId);
+
+    /**
+     * 更新
+     *
+     * @param cites cites
+     * @return Integer
+     */
+    @RequestMapping("updateAll")
+    Integer updateAll(@RequestBody CityVO[] cites);
 }

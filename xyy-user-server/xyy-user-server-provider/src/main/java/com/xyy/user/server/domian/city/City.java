@@ -1,10 +1,9 @@
 package com.xyy.user.server.domian.city;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.xyy.framework.mybaites.plus.domain.base.BaseEntity;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 城市
@@ -14,7 +13,7 @@ import java.util.Date;
  * @since 1.0
  */
 @TableName("tb_city")
-public class City extends Model<City> implements Serializable
+public class City extends BaseEntity<City>
 {
     private static final long serialVersionUID = 7676625814525533828L;
 
@@ -31,13 +30,6 @@ public class City extends Model<City> implements Serializable
     private Integer parentId;
 
     /**
-     * status
-     */
-    @TableLogic
-    @TableField(value = "status", condition = "int(5) default 0 ", fill = FieldFill.INSERT)
-    private Integer status;
-
-    /**
      * 排序
      */
     @TableField(value = "sort", condition = "int(20) default 0 ")
@@ -46,8 +38,14 @@ public class City extends Model<City> implements Serializable
     /**
      * cityCode
      */
-    @TableField(value = "city_code", strategy = FieldStrategy.NOT_NULL)
+    @TableField(value = "city_code")
     private String cityCode;
+
+    /**
+     * cityCode
+     */
+    @TableField(value = "post_code", strategy = FieldStrategy.NOT_NULL)
+    private String postCode;
 
     /**
      * name
@@ -55,27 +53,9 @@ public class City extends Model<City> implements Serializable
     @TableField(value = "city_name", strategy = FieldStrategy.NOT_NULL)
     private String cityName;
 
-    /**
-     * remark
-     */
-    @TableField("remark")
-    private String remark;
-
-    /**
-     * createTime
-     */
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private Date createTime;
-
-    /**
-     * updateTime
-     */
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
-    private Date updateTime;
-
     public static final String PARENT_ID = "parent_id";
     public static final String CITY_CODE = "city_code";
-    public static final String STATUS = "status";
+    public static final String POST_CODE = "post_code";
     public static final String CITY_NAME = "city_name";
     public static final String SORT = "sort";
 
@@ -99,26 +79,6 @@ public class City extends Model<City> implements Serializable
         this.parentId = parentId;
     }
 
-    public String getCityCode()
-    {
-        return cityCode;
-    }
-
-    public void setCityCode(String cityCode)
-    {
-        this.cityCode = cityCode;
-    }
-
-    public Integer getStatus()
-    {
-        return status;
-    }
-
-    public void setStatus(Integer status)
-    {
-        this.status = status;
-    }
-
     public Integer getSort()
     {
         return sort;
@@ -129,6 +89,26 @@ public class City extends Model<City> implements Serializable
         this.sort = sort;
     }
 
+    public String getCityCode()
+    {
+        return cityCode;
+    }
+
+    public void setCityCode(String cityCode)
+    {
+        this.cityCode = cityCode;
+    }
+
+    public String getPostCode()
+    {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode)
+    {
+        this.postCode = postCode;
+    }
+
     public String getCityName()
     {
         return cityName;
@@ -137,36 +117,6 @@ public class City extends Model<City> implements Serializable
     public void setCityName(String cityName)
     {
         this.cityName = cityName;
-    }
-
-    public String getRemark()
-    {
-        return remark;
-    }
-
-    public void setRemark(String remark)
-    {
-        this.remark = remark;
-    }
-
-    public Date getCreateTime()
-    {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime)
-    {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime()
-    {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime)
-    {
-        this.updateTime = updateTime;
     }
 
     @Override
