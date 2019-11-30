@@ -1,7 +1,7 @@
 package com.xyy.backend.server.controller.user;
 
 import com.xyy.framework.web.response.ResponseResult;
-import com.xyy.user.server.client.user.UserClient;
+import com.xyy.user.consumer.server.client.user.UserClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

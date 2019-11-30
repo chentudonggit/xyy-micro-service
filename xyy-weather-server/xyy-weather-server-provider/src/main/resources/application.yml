@@ -3,21 +3,21 @@ spring:
     active: development
 
   application:
-    name: xyy-user-server
+    name: xyy-weather-server
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
 
 ---
 server:
-  port: 6845
+  port: 6846
 
 spring:
   profiles: development
 
   datasource:
     druid:
-      url: jdbc:mysql://192.168.1.106:3306/user-center?characterEncoding=utf-8&useSSL=true
+      url: jdbc:mysql://192.168.1.106:3306/weather?characterEncoding=utf-8&useSSL=true
       username: root
       password: hm159357
 
@@ -30,7 +30,7 @@ eureka:
 
 ---
 server:
-  port: 5184
+  port: 5185
 
 spring:
   profiles: testing
@@ -44,7 +44,7 @@ eureka:
 
 ---
 server:
-  port: 29100
+  port: 29101
 
 spring:
   profiles: production

@@ -2,33 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
+        <artifactId>xyy-weather-server</artifactId>
         <groupId>com.xyy.micro.server</groupId>
-        <artifactId>xyy-micro-service</artifactId>
         <version>1.0.ALPHA</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>xyy-backend-server</artifactId>
+    <artifactId>xyy-weather-server-consumer</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.xyy.micro.server</groupId>
-            <artifactId>xyy-user-server-client</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.xyy.micro.server</groupId>
-            <artifactId>xyy-weather-server-client</artifactId>
+            <artifactId>xyy-weather-server-model</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.xyy.framework</groupId>
-            <artifactId>xyy-framework-api-starter</artifactId>
+            <artifactId>xyy-framework-web-starter</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
     </dependencies>
 

@@ -1,7 +1,7 @@
 package com.xyy.backend.server.controller.city;
 
 import com.xyy.framework.web.response.ResponseResult;
-import com.xyy.user.server.client.city.CityClient;
+import com.xyy.weather.client.city.CityClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
