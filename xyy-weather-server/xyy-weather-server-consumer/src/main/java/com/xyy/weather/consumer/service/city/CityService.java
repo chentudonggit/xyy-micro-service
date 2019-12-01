@@ -1,7 +1,7 @@
 package com.xyy.weather.consumer.service.city;
 
 import com.xyy.framework.common.builder.page.PageVO;
-import com.xyy.weather.model.server.vo.city.CityVO;
+import com.xyy.weather.model.vo.city.CityVO;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -2,7 +2,8 @@ package com.xyy.weather.provider.service.weather;
 
 import com.xyy.framework.common.helper.BeanHelper;
 import com.xyy.weather.consumer.service.weather.WeatherService;
-import com.xyy.weather.model.server.vo.CityWeatherVO;
+import com.xyy.weather.model.vo.weather.CityWeatherVO;
+import com.xyy.weather.model.vo.weather.ParsingVO;
 import com.xyy.weather.provider.manager.weather.CityWeatherManager;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,6 +41,18 @@ public class WeatherServiceImpl implements WeatherService
     @Override
     public CityWeatherVO save(Integer cityId, String humidity, Double pm25, Double pm10, String quality, Double temperature, String remark)
     {
-        return BeanHelper.convert(cityWeatherManager.save(cityId, humidity, pm25, pm10, quality, temperature, remark), CityWeatherVO.class);
+        return BeanHelper.convert(cityWeatherManager.save(cityId, humidity, pm25, pm10, quality, temperature, remark, true), CityWeatherVO.class);
+    }
+
+    /**
+     * 获取天气
+     *
+     * @param cityCode cityCode
+     * @return ParsingVO
+     */
+    @Override
+    public ParsingVO findByCityCode(String cityCode)
+    {
+        return cityWeatherManager.findByCityCode(cityCode);
     }
 }

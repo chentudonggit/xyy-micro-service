@@ -1,6 +1,6 @@
 package com.xyy.user.consumer.service.user;
 
-import com.xyy.user.consumer.server.vo.user.UserVO;
+import com.xyy.user.model.vo.user.UserVO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 

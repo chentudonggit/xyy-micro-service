@@ -8,11 +8,14 @@ import com.xyy.framework.common.builder.page.PageVO;
 import com.xyy.framework.common.helper.BeanHelper;
 import com.xyy.framework.common.utils.AssertUtils;
 import com.xyy.framework.common.utils.format.DateFormatUtils;
-import com.xyy.weather.model.server.vo.CityWeatherVO;
+import com.xyy.weather.model.vo.weather.CityWeatherVO;
+import com.xyy.weather.model.vo.weather.ParsingVO;
+import com.xyy.weather.provider.common.weather.parsing.ParsingDTO;
 import com.xyy.weather.provider.domain.city.City;
 import com.xyy.weather.provider.domain.weather.CityWeather;
 import com.xyy.weather.provider.manager.city.CityManager;
 import com.xyy.weather.provider.mapper.weather.CityWeatherMapper;
+import com.xyy.weather.provider.remote.request.weather.WeatherRemoteRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,6 +35,8 @@ public class CityWeatherManager extends ServiceImpl<CityWeatherMapper, CityWeath
 {
     @Autowired
     private CityManager cityManager;
+    @Autowired
+    private WeatherRemoteRequest weatherRemoteRequest;
 
     /**
      * 保存
@@ -43,16 +48,26 @@ public class CityWeatherManager extends ServiceImpl<CityWeatherMapper, CityWeath
      * @param quality     quality
      * @param temperature temperature
      * @param remark      remark
+     * @param checkSort   checkSort
      * @return CityWeather
      */
-    public CityWeather save(Integer cityId, String humidity, Double pm25, Double pm10, String quality, Double temperature, String remark)
+    public CityWeather save(Integer cityId, String humidity, Double pm25, Double pm10, String quality, Double temperature, String remark, boolean checkSort)
     {
         AssertUtils.isNull(pm25, "pm25 不能为空");
         AssertUtils.isNull(pm10, "pm10 不能为空");
         AssertUtils.isNull(humidity, "humidity 不能为空");
         City city = cityManager.isNullById(cityId);
-        int nowSort = findLastSortWithinRangeIsNow(cityId, DateFormatUtils.setMinute(new Date(), 5).getTime());
-        return null;
+        int nowSort;
+        if (checkSort)
+        {
+            nowSort = findLastSortWithinRangeIsNow(cityId, DateFormatUtils.setMinute(new Date(), -5).getTime());
+        } else
+        {
+            nowSort = findLastSort(cityId);
+        }
+        CityWeather cityWeather = new CityWeather(++nowSort, cityId, city.getParentId(), humidity, pm25, pm10, quality, temperature, remark);
+        cityWeather.insert();
+        return cityWeather;
     }
 
     /**
@@ -121,12 +136,27 @@ public class CityWeatherManager extends ServiceImpl<CityWeatherMapper, CityWeath
         if (Objects.nonNull(cityWeather))
         {
             Date updateTime = cityWeather.getUpdateTime();
-            if(now <= updateTime.getTime())
+            if (now <= updateTime.getTime())
             {
                 AssertUtils.msgUser("抱歉！您的操作过于频繁，请10分钟后重试，谢谢谅解。");
             }
             return cityWeather.getSort();
         }
         return 0;
+    }
+
+    /**
+     * 获取天气， 对外开放的接口
+     *
+     * @return ParsingVO
+     */
+    public ParsingVO findByCityCode(String cityCode)
+    {
+        ParsingDTO parsing = weatherRemoteRequest.findByCityCode(cityCode);
+        if (Objects.nonNull(parsing))
+        {
+            return BeanHelper.convert(parsing, ParsingVO.class);
+        }
+        return null;
     }
 }

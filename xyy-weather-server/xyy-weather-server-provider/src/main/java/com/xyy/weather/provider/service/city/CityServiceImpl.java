@@ -3,7 +3,7 @@ package com.xyy.weather.provider.service.city;
 import com.xyy.framework.common.builder.page.PageVO;
 import com.xyy.framework.common.helper.BeanHelper;
 import com.xyy.weather.consumer.service.city.CityService;
-import com.xyy.weather.model.server.vo.city.CityVO;
+import com.xyy.weather.model.vo.city.CityVO;
 import com.xyy.weather.provider.manager.city.CityManager;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -3,6 +3,7 @@ package com.xyy.weather.provider.domain.weather.forecast;
 import com.baomidou.mybatisplus.annotation.*;
 import com.xyy.framework.mybaites.plus.domain.base.BaseEntity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -26,7 +27,7 @@ public class CityForecast extends BaseEntity<CityForecast>
     /**
      * 天气id
      */
-    @TableId(value = "weather_id", type = IdType.UUID)
+    @TableField(value = "weather_id", strategy = FieldStrategy.NOT_NULL)
     private String weatherId;
 
     /**
@@ -102,6 +103,49 @@ public class CityForecast extends BaseEntity<CityForecast>
     @TableField("notice")
     private String notice;
 
+    /**
+     * sort
+     */
+    @TableField("sort")
+    private Integer sort;
+
+    /**
+     * batch
+     */
+    @TableField("batch")
+    private Integer batch;
+
+    /**
+     * dayType
+     */
+    @TableField("day_type")
+    private Integer dayType;
+
+    public CityForecast()
+    {
+    }
+
+    public CityForecast(String weatherId, Integer cityId, String high, String low, String week, String sunrise, String sunset,
+                        String winDirection, String windPower, String type, Integer aqi, Date ymd, String notice, Integer sort, Integer batch, Integer dayType)
+    {
+        this.weatherId = weatherId;
+        this.cityId = cityId;
+        this.high = high;
+        this.low = low;
+        this.week = week;
+        this.sunrise = sunrise;
+        this.sunset = sunset;
+        this.winDirection = winDirection;
+        this.windPower = windPower;
+        this.type = type;
+        this.aqi = aqi;
+        this.ymd = ymd;
+        this.notice = notice;
+        this.sort = sort;
+        this.batch = batch;
+        this.dayType = dayType;
+    }
+
     public static final String WEATHER_ID = "weather_id";
     public static final String CITY_ID = "city_id";
     public static final String HIGH = "high";
@@ -112,6 +156,9 @@ public class CityForecast extends BaseEntity<CityForecast>
     public static final String SUNSET = "sunset";
     public static final String AQI = "aqi";
     public static final String TYPE = "type";
+    public static final String SORT = "sort";
+    public static final String BATCH = "batch";
+    public static final String DAY_TYPE = "day_type";
 
     public Integer getId()
     {
@@ -251,5 +298,41 @@ public class CityForecast extends BaseEntity<CityForecast>
     public void setNotice(String notice)
     {
         this.notice = notice;
+    }
+
+    public Integer getSort()
+    {
+        return sort;
+    }
+
+    public void setSort(Integer sort)
+    {
+        this.sort = sort;
+    }
+
+    public Integer getBatch()
+    {
+        return batch;
+    }
+
+    public void setBatch(Integer batch)
+    {
+        this.batch = batch;
+    }
+
+    public Integer getDayType()
+    {
+        return dayType;
+    }
+
+    public void setDayType(Integer dayType)
+    {
+        this.dayType = dayType;
+    }
+
+    @Override
+    protected Serializable pkVal()
+    {
+        return id;
     }
 }

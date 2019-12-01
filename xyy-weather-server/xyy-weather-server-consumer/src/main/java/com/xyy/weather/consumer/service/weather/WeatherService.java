@@ -1,6 +1,7 @@
 package com.xyy.weather.consumer.service.weather;
 
-import com.xyy.weather.model.server.vo.CityWeatherVO;
+import com.xyy.weather.model.vo.weather.CityWeatherVO;
+import com.xyy.weather.model.vo.weather.ParsingVO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,4 +35,13 @@ public interface WeatherService
                        @RequestParam("quality") String quality,
                        @RequestParam("temperature") Double temperature,
                        @RequestParam("remark") String remark);
+
+    /**
+     * 获取天气
+     *
+     * @param cityCode cityCode
+     * @return ParsingVO
+     */
+    @RequestMapping("findByCityCode")
+    ParsingVO findByCityCode(@RequestParam("cityCode") String cityCode);
 }

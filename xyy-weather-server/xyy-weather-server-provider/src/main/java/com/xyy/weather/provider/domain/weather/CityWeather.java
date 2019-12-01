@@ -70,6 +70,24 @@ public class CityWeather extends BaseEntity<CityWeather>
     @TableField("temperature")
     private Double temperature;
 
+    public CityWeather()
+    {
+    }
+
+    public CityWeather(Integer sort, Integer cityId, Integer parentCityId, String humidity, Double pm25, Double pm10,
+                       String quality, Double temperature, String remark)
+    {
+        this.sort = sort;
+        this.cityId = cityId;
+        this.parentCityId = parentCityId;
+        this.humidity = humidity;
+        this.pm25 = pm25;
+        this.pm10 = pm10;
+        this.quality = quality;
+        this.temperature = temperature;
+        this.remark = remark;
+    }
+
     public static final String CITY_ID = "city_id";
     public static final String PARENT_CITY_ID = "parent_city_id";
     public static final String PM25 = "pm25";

@@ -1,4 +1,4 @@
-package com.xyy.weather.model.server.vo.forecast;
+package com.xyy.weather.model.vo.weather.forecast;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

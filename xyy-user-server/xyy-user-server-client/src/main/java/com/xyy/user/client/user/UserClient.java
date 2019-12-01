@@ -1,4 +1,4 @@
-package com.xyy.user.consumer.server.client.user;
+package com.xyy.user.client.user;
 
 import com.xyy.framework.common.web.constants.clients.eureka.EurekaServerType;
 import com.xyy.user.consumer.service.user.UserService;

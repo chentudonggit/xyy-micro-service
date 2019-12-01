@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyy.framework.common.builder.page.PageVO;
 import com.xyy.framework.common.helper.BeanHelper;
 import com.xyy.framework.common.utils.assertion.AssertUtils;
-import com.xyy.weather.model.server.vo.city.CityVO;
+import com.xyy.weather.model.vo.city.CityVO;
 import com.xyy.weather.provider.domain.city.City;
 import com.xyy.weather.provider.mapper.city.CityMapper;
 import org.springframework.stereotype.Component;

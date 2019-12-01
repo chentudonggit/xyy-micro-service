@@ -1,7 +1,8 @@
 package com.xyy.user.provider.service.user;
 
 import com.xyy.framework.common.utils.assertion.AssertUtils;
-import com.xyy.user.consumer.server.vo.user.UserVO;
+import com.xyy.user.consumer.service.user.UserService;
+import com.xyy.user.model.vo.user.UserVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.RestController;
 

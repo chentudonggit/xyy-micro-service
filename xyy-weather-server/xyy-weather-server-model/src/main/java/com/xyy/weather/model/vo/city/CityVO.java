@@ -1,4 +1,4 @@
-package com.xyy.weather.model.server.vo.city;
+package com.xyy.weather.model.vo.city;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -51,6 +51,12 @@ public class CityVO implements Serializable
      */
     @JSONField(name = "city_name")
     private String cityName;
+
+    /**
+     * parentName
+     */
+    @JSONField(name = "parent_name")
+    private String parentName;
 
     /**
      * childes
@@ -116,6 +122,16 @@ public class CityVO implements Serializable
     public void setCityName(String cityName)
     {
         this.cityName = cityName;
+    }
+
+    public String getParentName()
+    {
+        return parentName;
+    }
+
+    public void setParentName(String parentName)
+    {
+        this.parentName = parentName;
     }
 
     public List<CityVO> getChildren()

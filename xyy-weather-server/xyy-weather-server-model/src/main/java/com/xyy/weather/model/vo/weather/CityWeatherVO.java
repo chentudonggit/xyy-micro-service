@@ -1,8 +1,10 @@
-package com.xyy.weather.model.server.vo;
+package com.xyy.weather.model.vo.weather;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.xyy.weather.model.vo.weather.forecast.CityForecastVO;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 天气
@@ -61,6 +63,18 @@ public class CityWeatherVO implements Serializable
      */
    @JSONField(name="remark")
     private String remark;
+
+    /**
+     * 昨天
+     */
+    @JSONField(name="yesterday")
+    private CityForecastVO yesterday;
+
+    /**
+     * 未来
+     */
+    @JSONField(name="forecast")
+    private List<CityForecastVO> forecasts;
 
     public String getId()
     {
@@ -142,18 +156,23 @@ public class CityWeatherVO implements Serializable
         this.remark = remark;
     }
 
-    @Override
-    public String toString()
+    public CityForecastVO getYesterday()
     {
-        return "WeatherVO{" +
-                "id='" + id + '\'' +
-                ", cityId=" + cityId +
-                ", humidity='" + humidity + '\'' +
-                ", pm25=" + pm25 +
-                ", pm10=" + pm10 +
-                ", quality='" + quality + '\'' +
-                ", temperature=" + temperature +
-                ", remark='" + remark + '\'' +
-                '}';
+        return yesterday;
+    }
+
+    public void setYesterday(CityForecastVO yesterday)
+    {
+        this.yesterday = yesterday;
+    }
+
+    public List<CityForecastVO> getForecasts()
+    {
+        return forecasts;
+    }
+
+    public void setForecasts(List<CityForecastVO> forecasts)
+    {
+        this.forecasts = forecasts;
     }
 }
