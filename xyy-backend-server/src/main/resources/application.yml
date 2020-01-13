@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: development
+    active: production
 
   application:
     name: xyy-backend-server
@@ -42,7 +42,7 @@ spring:
 
 eureka:
   instance:
-    hostname: 127.0.0.1
+    hostname: iot.ghome.ink
   client:
     serviceUrl:
       defaultZone: http://chentd:ctd1992@${eureka.instance.hostname}:19820/eureka/

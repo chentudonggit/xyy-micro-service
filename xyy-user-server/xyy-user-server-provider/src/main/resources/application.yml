@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: development
+    active: production
 
   application:
     name: xyy-user-server
@@ -49,9 +49,15 @@ server:
 spring:
   profiles: production
 
+  datasource:
+    druid:
+      url: jdbc:mysql://iot.ghome.ink:5200/user-center?characterEncoding=utf-8&useSSL=true
+      username: root
+      password: smartplaything5200
+
 eureka:
   instance:
-    hostname: 127.0.0.1
+    hostname: iot.ghome.ink
   client:
     serviceUrl:
       defaultZone: http://chentd:ctd1992@${eureka.instance.hostname}:19820/eureka/
